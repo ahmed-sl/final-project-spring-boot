@@ -30,6 +30,7 @@ public class BusinessCustomerService {
     }
 
     public String addCustomer(BusinessCustomer businessCustomer) {
+        businessCustomer.setRole(businessCustomer.getRole().toUpperCase());
         businessCustomerRepository.save(businessCustomer);
         return "add business customer !";
     }
@@ -80,5 +81,13 @@ public class BusinessCustomerService {
 
     public String addDiscountToService(DiscountShopDTO discountShopDTO) {
         return serviceShopService.addDiscountToService(discountShopDTO);
+    }
+
+    public String deleteService(Integer index) {
+        return serviceShopService.deleteService(index);
+    }
+
+    public String deleteDiscount(Integer index) {
+        return discountOfferService.deleteDiscount(index);
     }
 }

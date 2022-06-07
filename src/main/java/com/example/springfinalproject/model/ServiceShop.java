@@ -9,6 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.Calendar;
 import java.util.Set;
 
 @AllArgsConstructor @NoArgsConstructor @Getter @Setter
@@ -21,6 +22,17 @@ public class ServiceShop {
     private String serviceType;
     @NotNull(message = "price is required")
     private Integer price;
+    @NotNull(message = "day number is required")
+    private Integer dayNumber;
+    private Calendar calendar = Calendar.getInstance();
+
+    public ServiceShop(Integer id, String serviceType, Integer price, Integer dayNumber) {
+        this.id = id;
+        this.serviceType = serviceType;
+        this.price = price;
+        this.dayNumber = dayNumber;
+        this.calendar.add(Calendar.DATE,dayNumber);
+    }
 
     @ManyToOne
     @JsonIgnore

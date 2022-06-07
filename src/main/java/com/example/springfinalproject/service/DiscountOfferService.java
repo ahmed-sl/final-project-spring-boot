@@ -27,4 +27,8 @@ public class DiscountOfferService {
     }
 
 
+    public String deleteDiscount(Integer index) {
+        discountOfferRepository.deleteById(index);
+        return "discount is deleted !";
+    }
 }

@@ -42,7 +42,7 @@ public class Customer  {//implements UserDetails
     private BusinessCustomer businessCustomer;
 
     @OneToMany(mappedBy = "customer")
-    private Set<ServiceShop> serviceShops;
+    private Set<ServiceShop> registers;
 
 
 //    @Override

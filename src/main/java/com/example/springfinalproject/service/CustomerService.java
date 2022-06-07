@@ -25,6 +25,7 @@ public class CustomerService {
     }
 
     public String addCustomer(Customer customer) {
+        customer.setRole(customer.getRole().toUpperCase());
         customerRepository.save(customer);
         return "customer add !";
     }
@@ -34,7 +35,7 @@ public class CustomerService {
                 orElseThrow(()-> new InvalidException("Invalid customer id"));
         ServiceShop serviceShop = serviceShopRepository.findById(serviceShopDTO.getServiceShopID()).
                 orElseThrow(()-> new InvalidException("invalid service id"));
-        customer.getServiceShops().add(serviceShop);
+        customer.getRegisters().add(serviceShop);
         customerRepository.save(customer);
         serviceShop.setCustomer(customer);
         serviceShopRepository.save(serviceShop);

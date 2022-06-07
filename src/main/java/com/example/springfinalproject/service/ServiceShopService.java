@@ -39,4 +39,9 @@ public class ServiceShopService {
         serviceShopRepository.save(serviceShop);
         return "add discount to service";
     }
+
+    public String deleteService(Integer index){
+        serviceShopRepository.deleteById(index);
+        return "service is deleted";
+    }
 }
