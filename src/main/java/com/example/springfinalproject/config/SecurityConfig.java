@@ -1,6 +1,6 @@
 package com.example.springfinalproject.config;
 
-//import com.example.springfinalproject.service.MyUserDetailsService;
+import com.example.springfinalproject.service.MyUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -14,18 +14,22 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-//    private final MyUserDetailsService myUserDetailsService;
+    private final MyUserDetailsService myUserDetailsService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(myUserDetailsService).passwordEncoder(new BCryptPasswordEncoder());
+        auth.userDetailsService(myUserDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .anyRequest().permitAll()
+                .antMatchers("/api/v1/user/register").permitAll()
+                .antMatchers("/api/v1/business/**").hasAuthority("ADMIN")
+                .anyRequest().authenticated()
                 .and().httpBasic();
+//                .anyRequest().permitAll()
+//                .and().httpBasic();
 //                .antMatchers("/api/v1/business/**").hasAuthority("ADMIN")
 //                .anyRequest().authenticated().and().httpBasic();
     }

@@ -19,7 +19,7 @@ public class MyUserController {
         return ResponseEntity.status(201).body(myUserSercive.getUsers());
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public ResponseEntity addUser(@RequestBody @Valid MyUser myUser){
         return ResponseEntity.status(200).body(myUserSercive.addUser(myUser));
     }
