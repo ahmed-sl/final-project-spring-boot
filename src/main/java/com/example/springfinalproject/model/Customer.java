@@ -17,25 +17,30 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
 
+//@AllArgsConstructor
 @AllArgsConstructor @NoArgsConstructor @Getter @Setter
 @Entity
-public class Customer  implements UserDetails{
+public class Customer  { //implements UserDetails
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @NotEmpty(message = "username is required")
-    @Column(unique = true)
-    private String username;
-    @NotEmpty(message = "password is required")
-    private String password;
     @NotEmpty(message = "phone number is required")
     private String phoneNumber;
     @NotEmpty(message = "email is required")
     @Email(message = "email must be valid")
     private String email;
-    @NotEmpty(message = "role is required")
-    @Pattern(regexp = "(?i)(user|admin)",message = "role must be user or admin")
-    private String role;
+
+    public Customer(Integer id, String phoneNumber, String email, MyUser user) {
+        this.id = id;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.user = user;
+    }
+
+    @OneToOne(cascade  = CascadeType.ALL)
+    @MapsId
+    @JoinColumn(name = "customer_id")
+    private MyUser user;
 
     @ManyToOne
     @JsonIgnore
@@ -45,28 +50,28 @@ public class Customer  implements UserDetails{
     private Set<ServiceShop> registers;
 
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority(this.role));
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        return Collections.singleton(new SimpleGrantedAuthority(this.role));
+//    }
+//
+//    @Override
+//    public boolean isAccountNonExpired() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonLocked() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isCredentialsNonExpired() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isEnabled() {
+//        return true;
+//    }
 }

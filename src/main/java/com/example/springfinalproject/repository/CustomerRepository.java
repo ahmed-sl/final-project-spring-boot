@@ -12,6 +12,6 @@ import java.util.Set;
 public interface CustomerRepository extends JpaRepository<Customer,Integer> {
 
 
-    Optional<Customer> findByUsername(String username);
+    Optional<Customer> findCustomerByUser(String username);
     Customer findCustomerByRegisters(ServiceShop serviceShops);
 }

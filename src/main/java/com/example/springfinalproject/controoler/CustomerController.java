@@ -3,6 +3,7 @@ package com.example.springfinalproject.controoler;
 import com.example.springfinalproject.DTO.API;
 import com.example.springfinalproject.DTO.CustomerDTO;
 import com.example.springfinalproject.DTO.ServiceShopDTO;
+import com.example.springfinalproject.DTO.UserDTO;
 import com.example.springfinalproject.model.Customer;
 import com.example.springfinalproject.service.CustomerService;
 import lombok.RequiredArgsConstructor;
@@ -30,8 +31,14 @@ public class CustomerController {
     }
 
     @PostMapping
-    public ResponseEntity<API> addCustomer(@RequestBody @Valid Customer customer){
-        String message = customerService.addCustomer(customer);
+    public ResponseEntity<API> addCustomer(@RequestBody @Valid UserDTO userDTO){
+        String message = customerService.addCustomer(userDTO);
+        logger.info("addCustomer it's used");
+        return ResponseEntity.status(200).body(new API(message,200));
+    }
+    @PostMapping("/add")
+    public ResponseEntity<API> addCustomer1(@RequestBody @Valid UserDTO userDTO){
+        String message = customerService.addCustomer(userDTO);
         logger.info("addCustomer it's used");
         return ResponseEntity.status(200).body(new API(message,200));
     }
