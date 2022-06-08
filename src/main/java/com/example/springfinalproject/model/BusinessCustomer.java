@@ -35,14 +35,8 @@ public class BusinessCustomer {
     @NotEmpty(message = "role is required")
     @Pattern(regexp = "(?i)(user|admin)",message = "role must be user or admin")
     private String role;
-
     @OneToMany(mappedBy = "businessCustomer", cascade = CascadeType.ALL)
     private Set<Customer> customers;
-
     @OneToMany(mappedBy = "businessCustomer", cascade = CascadeType.ALL)
     private Set<ServiceShop> serviceShops;
-
-
-
-
 }

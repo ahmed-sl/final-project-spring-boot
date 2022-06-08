@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -35,10 +36,18 @@ public class CustomerService {
                 orElseThrow(()-> new InvalidException("Invalid customer id"));
         ServiceShop serviceShop = serviceShopRepository.findById(serviceShopDTO.getServiceShopID()).
                 orElseThrow(()-> new InvalidException("invalid service id"));
-        customer.getRegisters().add(serviceShop);
-        customerRepository.save(customer);
-        serviceShop.setCustomer(customer);
-        serviceShopRepository.save(serviceShop);
-        return "add service to customer !";
+        Customer customer1 = customerRepository.findCustomerByRegisters(serviceShop);
+        if (customer1 == null){
+            customer.getRegisters().add(serviceShop);
+            customerRepository.save(customer);
+            serviceShop.setCustomer(customer);
+            serviceShopRepository.save(serviceShop);
+            return "add service to customer !";
+        }
+        return "other customer take this service";
+    }
+
+    public void serachService(){
+
     }
 }
