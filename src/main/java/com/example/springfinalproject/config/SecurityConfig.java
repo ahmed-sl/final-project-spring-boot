@@ -14,18 +14,19 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final MyUserDetailsService myUserDetailsService;
+//    private final MyUserDetailsService myUserDetailsService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(myUserDetailsService).passwordEncoder(new BCryptPasswordEncoder());
+//        auth.userDetailsService(myUserDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
                 .anyRequest().permitAll()
-                .antMatchers("/api/v1/business/**").hasAuthority("ADMIN")
-                .anyRequest().authenticated().and().httpBasic();
+                .and().httpBasic();
+//                .antMatchers("/api/v1/business/**").hasAuthority("ADMIN")
+//                .anyRequest().authenticated().and().httpBasic();
     }
 }
