@@ -39,7 +39,7 @@ public class BusinessCustomer {
 
     @OneToOne(cascade = CascadeType.ALL)
     @MapsId
-    @Column(name = "business_id")
+    @JoinColumn(name = "business_id")
     @JsonIgnore
     private MyUser myUser;
 
