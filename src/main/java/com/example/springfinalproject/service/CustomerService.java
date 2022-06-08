@@ -1,23 +1,18 @@
 package com.example.springfinalproject.service;
 
-import com.example.springfinalproject.DTO.CustomerDTO;
 import com.example.springfinalproject.DTO.ServiceShopDTO;
 import com.example.springfinalproject.DTO.UserDTO;
 import com.example.springfinalproject.exception.InvalidException;
-import com.example.springfinalproject.model.BusinessCustomer;
 import com.example.springfinalproject.model.Customer;
 import com.example.springfinalproject.model.MyUser;
 import com.example.springfinalproject.model.ServiceShop;
-import com.example.springfinalproject.repository.BusinessCustomerRepository;
 import com.example.springfinalproject.repository.CustomerRepository;
 import com.example.springfinalproject.repository.MyUserRepository;
 import com.example.springfinalproject.repository.ServiceShopRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Calendar;
 import java.util.List;
-import java.util.Set;
 
 @Service
 @RequiredArgsConstructor

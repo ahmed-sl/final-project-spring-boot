@@ -29,6 +29,10 @@ public class MyUser {
     @PrimaryKeyJoinColumn
     private Customer customer;
 
+    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private BusinessCustomer businessCustomer;
+
 
 
 }

@@ -18,11 +18,6 @@ public class BusinessCustomer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @NotEmpty(message = "username is required")
-    @Column(unique = true)
-    private String username;
-    @NotEmpty(message = "password is required")
-    private String password;
     @NotEmpty(message = "address is required")
     private String address;
     @NotEmpty(message = "phone number is required")
@@ -32,10 +27,21 @@ public class BusinessCustomer {
     private String email;
     @NotEmpty(message = "location is required")
     private String location;
-    @NotEmpty(message = "role is required")
-    @Pattern(regexp = "(?i)(user|admin)",message = "role must be user or admin")
-    private String role;
 
+    public BusinessCustomer(Integer id, String address, String phoneNumber, String email, String location, MyUser myUser) {
+        this.id = id;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.location = location;
+        this.myUser = myUser;
+    }
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @MapsId
+    @Column(name = "business_id")
+    @JsonIgnore
+    private MyUser myUser;
 
     @OneToMany(mappedBy = "businessCustomer", cascade = CascadeType.ALL)
     private Set<Customer> customers;

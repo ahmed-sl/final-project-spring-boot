@@ -1,7 +1,6 @@
 package com.example.springfinalproject.controoler;
 
 import com.example.springfinalproject.DTO.API;
-import com.example.springfinalproject.DTO.CustomerDTO;
 import com.example.springfinalproject.DTO.ServiceShopDTO;
 import com.example.springfinalproject.DTO.UserDTO;
 import com.example.springfinalproject.model.Customer;

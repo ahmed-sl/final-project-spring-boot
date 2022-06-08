@@ -1,15 +1,11 @@
 package com.example.springfinalproject.service;
 
-import com.example.springfinalproject.DTO.CustomerDTO;
-import com.example.springfinalproject.DTO.DiscountShopDTO;
-import com.example.springfinalproject.DTO.ServiceBusinessDTO;
+import com.example.springfinalproject.DTO.*;
 import com.example.springfinalproject.exception.InvalidException;
-import com.example.springfinalproject.model.BusinessCustomer;
-import com.example.springfinalproject.model.Customer;
-import com.example.springfinalproject.model.DiscountOffer;
-import com.example.springfinalproject.model.ServiceShop;
+import com.example.springfinalproject.model.*;
 import com.example.springfinalproject.repository.BusinessCustomerRepository;
 import com.example.springfinalproject.repository.CustomerRepository;
+import com.example.springfinalproject.repository.MyUserRepository;
 import com.example.springfinalproject.repository.ServiceShopRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,13 +20,18 @@ public class BusinessCustomerService {
     private final ServiceShopRepository serviceShopRepository;
     private final ServiceShopService serviceShopService;
     private final DiscountOfferService discountOfferService;
+    private final MyUserRepository myUserRepository;
 
     public List<BusinessCustomer> getCustomer() {
         return businessCustomerRepository.findAll();
     }
 
-    public String addCustomer(BusinessCustomer businessCustomer) {
-        businessCustomer.setRole(businessCustomer.getRole().toUpperCase());
+    public String addBusiness(BusinessDTO businessDTO) {
+        MyUser myUser = myUserRepository.findById(businessDTO.getMyUserID()).
+                orElseThrow(()->new InvalidException("Invalid user id"));
+        BusinessCustomer businessCustomer = new BusinessCustomer(
+                null,businessDTO.getAddress(),businessDTO.getPhoneNumber(),
+                businessDTO.getEmail(),businessDTO.getLocation(),myUser);
         businessCustomerRepository.save(businessCustomer);
         return "add business customer !";
     }
@@ -90,4 +91,6 @@ public class BusinessCustomerService {
     public String deleteDiscount(Integer index) {
         return discountOfferService.deleteDiscount(index);
     }
+
+
 }

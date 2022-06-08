@@ -1,15 +1,10 @@
 package com.example.springfinalproject.controoler;
 
-import com.example.springfinalproject.DTO.API;
-import com.example.springfinalproject.DTO.CustomerDTO;
-import com.example.springfinalproject.DTO.DiscountShopDTO;
-import com.example.springfinalproject.DTO.ServiceBusinessDTO;
+import com.example.springfinalproject.DTO.*;
 import com.example.springfinalproject.model.BusinessCustomer;
-import com.example.springfinalproject.model.Customer;
 import com.example.springfinalproject.model.DiscountOffer;
 import com.example.springfinalproject.model.ServiceShop;
 import com.example.springfinalproject.service.BusinessCustomerService;
-import com.example.springfinalproject.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,8 +30,8 @@ public class BusinessCustomerController {
     }
 
     @PostMapping
-    public ResponseEntity<API> addBusiness(@RequestBody @Valid BusinessCustomer businessCustomer){
-        String message = businessCustomerService.addCustomer(businessCustomer);
+    public ResponseEntity<API> addBusiness(@RequestBody @Valid BusinessDTO businessDTO){
+        String message = businessCustomerService.addBusiness(businessDTO);
         logger.info("addBusiness it's used");
         return ResponseEntity.status(200).body(new API(message,200));
     }
