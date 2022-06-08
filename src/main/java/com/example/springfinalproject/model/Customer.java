@@ -40,6 +40,7 @@ public class Customer  { //implements UserDetails
     @OneToOne(cascade  = CascadeType.ALL)
     @MapsId
     @JoinColumn(name = "customer_id")
+    @JsonIgnore
     private MyUser user;
 
     @ManyToOne

@@ -27,7 +27,6 @@ public class MyUser {
 
     @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
-    @JsonIgnore
     private Customer customer;
 
 
