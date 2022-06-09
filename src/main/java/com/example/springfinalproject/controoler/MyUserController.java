@@ -13,6 +13,7 @@ import javax.validation.Valid;
 public class MyUserController {
     private final MyUserSercive myUserSercive;
 
+
     @GetMapping
     public ResponseEntity getUsers(){
         return ResponseEntity.status(201).body(myUserSercive.getUsers());
