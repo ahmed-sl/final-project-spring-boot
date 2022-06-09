@@ -700,3 +700,14 @@ Caused by: com.mysql.cj.jdbc.exceptions.MySQLQueryInterruptedException: foreign 
 2022-06-09 12:21:38.356  INFO 14668 --- [main] c.e.s.SpringFinalProjectApplication      : Started SpringFinalProjectApplication in 13.783 seconds (JVM running for 14.702)
 2022-06-09 12:56:26.872  WARN 14668 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=11m26s568ms654µs900ns).
 2022-06-09 14:34:25.135  WARN 14668 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=15m26s956ms852µs400ns).
+2022-06-09 14:43:58.716  INFO 14668 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-06-09 14:43:58.748  INFO 14668 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-06-09 14:43:59.116 ERROR 14668 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000478: Unsuccessful: alter table business_customer drop foreign key FKb9ilxi9wsotfvh1flxkdx0m3x
+2022-06-09 14:43:59.298 ERROR 14668 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000478: Unsuccessful: alter table customer drop foreign key FKa4j27ohtmad6i7plx1idjm0fv
+2022-06-09 14:43:59.476 ERROR 14668 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000478: Unsuccessful: alter table customer drop foreign key FKluapde2bq2eepg0kqm0neykui
+2022-06-09 14:43:59.658 ERROR 14668 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000478: Unsuccessful: alter table discount_offer_service_shops drop foreign key FKs6dlgpthi65iquhcyvhq64wyq
+2022-06-09 14:43:59.834 ERROR 14668 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000478: Unsuccessful: alter table discount_offer_service_shops drop foreign key FKc6h6m1srxnyn23s2ayffnrn51
+2022-06-09 14:44:00.011 ERROR 14668 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000478: Unsuccessful: alter table service_shop drop foreign key FK3h1ht6438b8b0wob2veuv885p
+2022-06-09 14:44:00.188 ERROR 14668 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000478: Unsuccessful: alter table service_shop drop foreign key FKqysjxf7odso0lt2wv8hv7hrox
+2022-06-09 14:44:01.802  INFO 14668 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-06-09 14:44:02.700  INFO 14668 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

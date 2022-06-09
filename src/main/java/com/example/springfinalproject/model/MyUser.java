@@ -25,7 +25,7 @@ public class MyUser implements UserDetails{
     private String username;
     @NotEmpty(message = "password is required")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @Pattern(regexp = "^(?=.[a-z])(?=.[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$",message = "Password should have A-a ,1-9 and length mora than 8")
+    @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$",message = "Password should have A-a ,1-9 and length mora than 8")
     private String password;
     @NotEmpty(message = "role is required")
     @Pattern(regexp = "(?i)(user|admin)",message = "role must be user or admin")
