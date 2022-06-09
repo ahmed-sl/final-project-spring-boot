@@ -28,6 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/v1/business/**").hasAuthority("ADMIN")
                 .antMatchers("/api/v1/customer/**").hasAuthority("USER")
                 .anyRequest().permitAll()
+                .and().logout().logoutUrl("/api/v1/logout")
                 .and().httpBasic();
     }
 }
