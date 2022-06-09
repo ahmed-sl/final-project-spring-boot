@@ -5,7 +5,6 @@ import com.example.springfinalproject.service.MyUserSercive;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 
 @RestController

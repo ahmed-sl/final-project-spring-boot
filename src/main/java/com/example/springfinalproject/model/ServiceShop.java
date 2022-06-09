@@ -1,6 +1,7 @@
 package com.example.springfinalproject.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,9 +24,11 @@ public class ServiceShop {
     @NotNull(message = "price is required")
     private Integer price;
     @NotNull(message = "day number is required")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Integer dayNumber;
     private Calendar calendar = Calendar.getInstance();
 
+    // create constructor to optimize date
     public ServiceShop(Integer id, String serviceType, Integer price, Integer dayNumber) {
         this.id = id;
         this.serviceType = serviceType;

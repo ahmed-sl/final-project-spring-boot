@@ -47,8 +47,4 @@ public class CustomerService {
         }
         return "other customer take this service";
     }
-
-    public void serachService(){
-
-    }
 }

@@ -5,31 +5,26 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Set;
 
-//@AllArgsConstructor
 @AllArgsConstructor @NoArgsConstructor @Getter @Setter
 @Entity
-public class Customer  { //implements UserDetails
+public class Customer  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @NotEmpty(message = "phone number is required")
+    @Pattern(regexp = "^(009665|9665|\\+9665|05|5)[013456789][0-9]{7}$",message = "invalid phone Number")
     private String phoneNumber;
     @NotEmpty(message = "email is required")
     @Email(message = "email must be valid")
     private String email;
 
+    // create constructor to add myUser to customer without other relation
     public Customer(Integer id, String phoneNumber, String email, MyUser user) {
         this.id = id;
         this.phoneNumber = phoneNumber;
@@ -50,29 +45,4 @@ public class Customer  { //implements UserDetails
     @OneToMany(mappedBy = "customer")
     private Set<ServiceShop> registers;
 
-
-//    @Override
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//        return Collections.singleton(new SimpleGrantedAuthority(this.role));
-//    }
-//
-//    @Override
-//    public boolean isAccountNonExpired() {
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean isAccountNonLocked() {
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean isCredentialsNonExpired() {
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean isEnabled() {
-//        return true;
-//    }
 }

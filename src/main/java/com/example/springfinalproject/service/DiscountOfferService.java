@@ -1,11 +1,7 @@
 package com.example.springfinalproject.service;
 
-import com.example.springfinalproject.DTO.DiscountShopDTO;
-import com.example.springfinalproject.exception.InvalidException;
 import com.example.springfinalproject.model.DiscountOffer;
-import com.example.springfinalproject.model.ServiceShop;
 import com.example.springfinalproject.repository.DiscountOfferRepository;
-import com.example.springfinalproject.repository.ServiceShopRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

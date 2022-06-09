@@ -1,8 +1,6 @@
 package com.example.springfinalproject.service;
 
-import com.example.springfinalproject.model.Customer;
 import com.example.springfinalproject.model.MyUser;
-import com.example.springfinalproject.repository.CustomerRepository;
 import com.example.springfinalproject.repository.MyUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -17,20 +17,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final MyUserDetailsService myUserDetailsService;
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception { //connect with details class and hashing password
         auth.userDetailsService(myUserDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    protected void configure(HttpSecurity http) throws Exception { // security config
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/api/v1/user/register").permitAll()
                 .antMatchers("/api/v1/business/**").hasAuthority("ADMIN")
-                .anyRequest().authenticated()
+                .antMatchers("/api/v1/customer/**").hasAuthority("USER")
+                .anyRequest().permitAll()
                 .and().httpBasic();
-//                .anyRequest().permitAll()
-//                .and().httpBasic();
-//                .antMatchers("/api/v1/business/**").hasAuthority("ADMIN")
-//                .anyRequest().authenticated().and().httpBasic();
     }
 }

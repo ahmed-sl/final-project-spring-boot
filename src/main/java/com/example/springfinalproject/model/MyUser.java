@@ -1,5 +1,6 @@
 package com.example.springfinalproject.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,7 +8,6 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
@@ -16,7 +16,7 @@ import java.util.Collections;
 
 @AllArgsConstructor @NoArgsConstructor @Getter @Setter
 @Entity
-public class MyUser implements UserDetails{//
+public class MyUser implements UserDetails{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -24,6 +24,7 @@ public class MyUser implements UserDetails{//
     @Column(unique = true)
     private String username;
     @NotEmpty(message = "password is required")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     @NotEmpty(message = "role is required")
     @Pattern(regexp = "(?i)(user|admin)",message = "role must be user or admin")
@@ -38,6 +39,7 @@ public class MyUser implements UserDetails{//
     private BusinessCustomer businessCustomer;
 
 
+    // method for control user
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singleton(new SimpleGrantedAuthority(this.role));

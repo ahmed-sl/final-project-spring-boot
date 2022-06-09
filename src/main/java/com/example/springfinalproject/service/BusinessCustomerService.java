@@ -91,6 +91,4 @@ public class BusinessCustomerService {
     public String deleteDiscount(Integer index) {
         return discountOfferService.deleteDiscount(index);
     }
-
-
 }

@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -24,6 +23,7 @@ public class DiscountOffer {
     private Integer dayNumber;
     private Calendar expiryDateDiscount = Calendar.getInstance();
 
+    // create constructor to optimize date
     public DiscountOffer(Integer id, String discountType, Integer dayNumber) {
         this.id = id;
         this.discountType = discountType;
