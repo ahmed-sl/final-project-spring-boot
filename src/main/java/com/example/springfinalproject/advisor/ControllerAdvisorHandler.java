@@ -4,6 +4,7 @@ import com.example.springfinalproject.exception.InvalidException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.orm.jpa.JpaSystemException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -53,6 +54,12 @@ public class ControllerAdvisorHandler {
     }
 
 
+    @ExceptionHandler(value = InvalidDataAccessApiUsageException.class)
+    public ResponseEntity<API> handlerInvalidDataAccessApiUsageException(InvalidDataAccessApiUsageException invalidDataAccessApiUsageException){
+        String message = invalidDataAccessApiUsageException.getMessage();
+        logger.error("use handlerJpaSystemException");
+        return ResponseEntity.status(400).body(new API(message,400));
+    }
 
 
 }
