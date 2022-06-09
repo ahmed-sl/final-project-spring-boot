@@ -10,6 +10,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.validation.ConstraintViolationException;
+
 @RestControllerAdvice
 public class ControllerAdvisorHandler {
 
@@ -21,6 +23,14 @@ public class ControllerAdvisorHandler {
         logger.error("use handlerMethodArgument");
         return ResponseEntity.status(400).body(new API(message,400));
     }
+
+    @ExceptionHandler(value = ConstraintViolationException.class)
+    public ResponseEntity<API> handlerMethodArgument(ConstraintViolationException constraintViolationException){
+        String message = constraintViolationException.getMessage();
+        logger.error("use constraintViolationException");
+        return ResponseEntity.status(400).body(new API(message,400));
+    }
+
 
     @ExceptionHandler(value = DataIntegrityViolationException.class)
     public ResponseEntity<API> handlerDataIntegrity(DataIntegrityViolationException dataIntegrity){
@@ -41,6 +51,8 @@ public class ControllerAdvisorHandler {
         logger.error("use handlerJpaSystemException");
         return ResponseEntity.status(400).body(new API(message,400));
     }
+
+
 
 
 }
