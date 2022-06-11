@@ -4,6 +4,8 @@ import com.example.springfinalproject.DTO.API;
 import com.example.springfinalproject.DTO.ServiceShopDTO;
 import com.example.springfinalproject.DTO.UserDTO;
 import com.example.springfinalproject.model.Customer;
+import com.example.springfinalproject.model.ServiceShop;
+import com.example.springfinalproject.service.BusinessCustomerService;
 import com.example.springfinalproject.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -19,6 +21,7 @@ import java.util.List;
 public class CustomerController {
 
     private final CustomerService customerService;
+    private final BusinessCustomerService businessCustomerService;
 
     Logger logger = LoggerFactory.getLogger(CustomerController.class);
 
@@ -46,5 +49,11 @@ public class CustomerController {
         String message = customerService.addServiceToCustomer(serviceShopDTO);
         logger.info("addServiceToCustomer it's used");
         return ResponseEntity.status(200).body(new API(message,200));
+    }
+
+    @GetMapping("/service")
+    public ResponseEntity<List<ServiceShop>> getServices(){
+        logger.info("getServices it's used");
+        return ResponseEntity.status(201).body(businessCustomerService.getServices());
     }
 }
