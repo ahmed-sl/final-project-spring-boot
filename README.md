@@ -10,7 +10,7 @@ finally I hosted my web site by Heroku.
 - Testing: Postman or any Browser
 
 ### Class Digram
-![Class digram final project dpring boot](https://user-images.githubusercontent.com/85416370/173201724-f3978e65-2a88-4391-8c7e-cbe93d9ebab2.png | width == 100)
+![Class digram final project dpring boot](https://user-images.githubusercontent.com/85416370/173201724-f3978e65-2a88-4391-8c7e-cbe93d9ebab2.png)
 
 
  #### Get statrted with documentation 
