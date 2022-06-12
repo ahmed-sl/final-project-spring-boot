@@ -14,7 +14,7 @@ finally I hosted my web site by Heroku.
 
 
  #### Get statrted with documentation 
-https://documenter.getpostman.com/view/18939368/Uz5MEtGP
+[Postman_Documentation](https://documenter.getpostman.com/view/18939368/Uz5MEtGP)
 
 #### Heroku hosted
-https://barber-shope.herokuapp.com/api/v1/user/register
+[Herohu_Link](https://barber-shope.herokuapp.com/api/v1/user/register)
