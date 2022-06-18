@@ -10,7 +10,7 @@ finally I hosted my web site by Heroku.
 - Testing: Postman or any Browser
 
 ### Class Digram
-![Class digram final project dpring boot](https://user-images.githubusercontent.com/85416370/173201724-f3978e65-2a88-4391-8c7e-cbe93d9ebab2.png)
+![edit Class Digram (2)](https://user-images.githubusercontent.com/85416370/174451459-07c975c2-559a-49fa-aac4-7d90b138af50.png)
 
 
  #### Get statrted with documentation 
@@ -18,3 +18,4 @@ finally I hosted my web site by Heroku.
 
 #### Heroku hosted
 [Herohu_Link](https://barber-shope.herokuapp.com/api/v1/user/register)
+
